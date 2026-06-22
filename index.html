@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HP Robots Lab Guide</title>
+<title>HP Robots Otto TUMO Lab Guide</title>
 https://fonts.cdnfonts.com/css/forma-djr-text
 <style>
 body{margin:0;font-family:'Forma DJR Text', Arial;background:linear-gradient(135deg,#eef4ff,#f5ecff)}
@@ -25,7 +25,7 @@ button{padding:10px;border:none;border-radius:8px;cursor:pointer}
 <body>
 
 <div class="header">
-<div class="header-top">🤖 HP Robots Lab</div>
+<div class="header-top">🤖 HP Robots TUMO Lab 🎭</div>
 <div class="filters" id="filters"></div>
 <div class="navTop">
 <button onclick="prev()">⬅ Prev</button>
@@ -36,14 +36,15 @@ button{padding:10px;border:none;border-radius:8px;cursor:pointer}
 <div class="container">
 <div class="progress-bar"><div id="progressBar" class="progress"></div></div>
 <div class="card">
+
+<h2 id="session"></h2>
+<h3 id="time"></h3>
 <img id="img">
 <h1 id="title"></h1>
-<p id="session"></p>
-<p id="time"></p>
 <p id="content"></p>
 <p><b>🎯 Goal:</b> <span id="goal"></span></p>
-<p><b>✅ Outcome:</b> <span id="outcome"></span></p>
-<p><b>🧑‍🏫 Notes:</b> <span id="notes"></span></p>
+<p><b>📋 Activities:</b> <span id="outcome"></span></p>
+<p><b>🧑 Notes:</b> <span id="notes"></span></p>
 <p><b>🧰 Materials:</b> <span id="materials"></span></p>
 <div id="resourcesBlock"><ul id="resources"></ul></div>
 <button onclick="toggle()" id="progressBtn">Mark Done</button>
@@ -53,40 +54,120 @@ button{padding:10px;border:none;border-radius:8px;cursor:pointer}
 <script>
 const slides=[
 // QR
-{day:'All',session:'Welcome',title:'Scan & Start',time:'',content:'Scan QR and open guide.',goal:'Access guide',outcome:'All ready',notes:'Project QR',materials:['Screen'],resources:['ADD_URL_HERE'],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
+{day:'All',session:'Welcome',title:'HP Robots TUMO Lab',time:'',
+content:'Scan QR and open guide.',
+goal:'Access guide',
+outcome:'Scan and save link',
+notes:'LETS GO!',
+materials:['Screen'],
+resources:['https://tumo-gamma.vercel.app/'],
+img:'https://hprobots.com/wp-content/uploads/2026/05/hero-shot-new-768x512.png'},
 
 // -------- Session 1 --------
-{day:'Day 1',session:'Session 1',title:'Introductions',time:'09:30–10:00',content:'Meet each other',goal:'Build trust',outcome:'Group formed',notes:'30 min',materials:['None'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 1',session:'Session 1',title:'Inspiration Talk',time:'10:00–10:15',content:'STEAM + ecosystem',goal:'Motivate',outcome:'Inspired',notes:'Short',materials:['Slides'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 1',title:'Robot Demo',time:'10:15–10:35',content:'See Otto',goal:'Understand',outcome:'Ideas',notes:'Show sensors',materials:['Robot'],resources:['https://hprobots.com/'],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 1',title:'Ideation',time:'10:35–10:55',content:'Choose idea',goal:'Direction',outcome:'Concept',notes:'Creative',materials:['Paper'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 1',session:'Session 1',title:'Teams',time:'10:55–11:15',content:'Form teams',goal:'Collaboration',outcome:'Teams ready',notes:'2-3',materials:['Notebook'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 1',session:'Session 1',title:'3D Print Start',time:'11:15–11:30',content:'Send prints',goal:'Start making',outcome:'Printing',notes:'Small parts',materials:['Printer'],resources:['https://www.tinkercad.com/learn'],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
+{day:'Day 1',session:'Session 1',title:'INTRO & DISCOVERY with HP Robots',time:'09:30–11:30',
+content:'Meet each other, STEAM + ecosystem, Meet Otto, Generate & Pick ideas, Form Teams',
+goal:'Build trust, Motivate, Understand, Direction, Collaboration, Start making',
+outcome:'Inspiration Talk, Robot Demo, Ideation Challenge, Team Formation, 3D Print Quickstart',
+notes:'open your mind',
+materials:['slides','robots','paper or notebook','3D printer'],
+resources:['https://hprobots.com/'],
+img:'https://hprobots.com/wp-content/uploads/2025/03/Snimka-obrazovky-2024-09-13-112356-2-1024x576.png'},
 
 // -------- Session 2 --------
-{day:'Day 1',session:'Session 2',title:'Lecture',time:'11:30–11:50',content:'Mechanics + electronics',goal:'Understand systems',outcome:'Knowledge',notes:'Clear basics',materials:['Board'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 2',title:'Remix',time:'11:50–12:10',content:'Combine ideas',goal:'Creativity',outcome:'Concepts',notes:'Fun',materials:['Paper'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 1',session:'Session 2',title:'AI Prompting',time:'12:10–12:35',content:'Generate ideas',goal:'AI skills',outcome:'Ideas',notes:'Guide',materials:['AI'],resources:['https://teachablemachine.withgoogle.com/'],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 2',title:'Moodboard',time:'12:35–13:15',content:'Sketch designs',goal:'Design clarity',outcome:'Sheets',notes:'Visual',materials:['Markers'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 1',session:'Session 2',title:'Share',time:'13:15–13:30',content:'Present',goal:'Communication',outcome:'Feedback',notes:'Quick',materials:['None'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
+{day:'Day 1',session:'Session 2',title:'CONCEPT DEVELOPMENT & FOUNDATIONS',time:'11:30–13:30',
+content:'Mechanics + electronics, Combine ideas, Generate ideas, Sketch designs, Present',
+goal:'Understand systems, Creativity, AI skills, Design clarity, Communication',
+outcome:'Short Lecture, Everything is a Remix, AI Prompting, Moodboard, Share',
+notes:'think out of the box',
+materials:['Board, Paper, Markers, AI tools'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/2024/09/set-01-angle-02.png'},
+
+// -------- Lunch break --------
 
 // -------- Session 3 --------
-{day:'Day 1',session:'Session 3',title:'Safety',time:'14:30–14:40',content:'Rules',goal:'Safety',outcome:'Ready',notes:'Mandatory',materials:['None'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 3',title:'Assembly',time:'14:40–15:40',content:'Build robot',goal:'Hands-on',outcome:'Built robot',notes:'Assist',materials:['Kit'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 3',title:'IO Activity',time:'15:40–16:00',content:'Sensors',goal:'Electronics',outcome:'Understanding',notes:'Explain',materials:['Board'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 1',session:'Session 3',title:'Soldering',time:'16:00–16:20',content:'Optional solder',goal:'Skills',outcome:'Circuit',notes:'Optional',materials:['Tools'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 1',session:'Session 3',title:'Test',time:'16:20–16:30',content:'Power on',goal:'Validate',outcome:'Working robot',notes:'Test',materials:['Robot'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
+{day:'Day 1',session:'Session 3',title:'CONNECT: ASSEMBLY & ELECTRONICS',time:'14:30–16:30',
+content:'Build robot, Sensors, Connectors',
+goal:'Safety, Hands-on, Electronics, Validation',
+outcome:'Assembly, IO Activity, Plug & Play, Quick Test',
+notes:'learn from the inside',
+materials:['Kits, Board, Tools, Expansions'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/2024/09/set-04-angle-01-2.png'},
+
+// -------- Session 4 --------
+{day:'Day 1',session:'Session 4',title:' CREATE: 3D MODELING FUNDAMENTALS',time:'16:30–18:30',
+content:'3D modeling and 3D printing',
+goal:'Learn CAD basics, Design custom robot accessories and parts',
+outcome:'CAD basics, Hands-on modeling, Print-ready design',
+notes:'digitalize your ideas',
+materials:['None'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/2025/03/makersempire-1024x616.png'},
 
 // -------- Session 5 --------
-{day:'Day 2',session:'Session 5',title:'Recap',time:'09:30–09:45',content:'Review',goal:'Reinforce',outcome:'Shared knowledge',notes:'Ask',materials:['None'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 2',session:'Session 5',title:'Setup',time:'09:45–10:00',content:'Connect',goal:'Ready',outcome:'Connected',notes:'Bluetooth',materials:['Laptop'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 2',session:'Session 5',title:'Coding Basics',time:'10:00–10:40',content:'RGB + movement',goal:'Start coding',outcome:'Program',notes:'Fun',materials:['App'],resources:['https://studio.code.org/'],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 2',session:'Session 5',title:'Logic',time:'10:40–11:10',content:'If/loops',goal:'Logic',outcome:'Understanding',notes:'Explain',materials:['Board'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'},
-{day:'Day 2',session:'Session 5',title:'Challenge',time:'11:10–11:30',content:'Robot reacts',goal:'Apply',outcome:'Behavior',notes:'Fun',materials:['Robot'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
+{day:'Day 2',session:'Session 5',title:'CODE 101: BLOCKS PROGRAMMING',time:'09:30–11:30',
+content:'Icons vs Words Blocks graphical coding like Scratch, Blockly, MakeCode, etc.',
+goal:'•	Introduction to basic programming logic, Start coding robots',
+outcome:'Recap, Setup, coding basics, logic, mini challenge',
+notes:'talk to your robot',
+materials:['Laptop, App, Robots'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/2025/01/code-options-photos-2-1024x683.png'},
 
-// -------- END --------
-{day:'Day 3',session:'Session 10',title:'Showcase',time:'11:30–12:20',content:'Present',goal:'Communication',outcome:'Expo',notes:'Encourage',materials:['Camera'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-robot.png'},
-{day:'Day 3',session:'Session 10',title:'Portfolio',time:'12:20–13:00',content:'Upload',goal:'Documentation',outcome:'Portfolio',notes:'Important',materials:['PC'],resources:[],img:'https://hprobots.com/wp-content/uploads/2020/09/ottoDIY-face.png'}
+// -------- Session 6 --------
+{day:'Day 2',session:'Session 6',title:'CODE Pro: MICRO PYTHON FUNDAMENTALS',time:'11:30–13:30',
+content:'Text-based programming',
+goal:'Understand code structure',
+outcome:'Blocks vs logic, micropython basics, Coding exercises, Micro project',
+notes:'Bridge from blocks',
+materials:['Thonny IDE Editor'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/2026/06/app-devices-scaled.png'},
+
+// -------- Lunch break --------
+
+// -------- Session 7 --------
+{day:'Day 2',session:'Session 7',title:'AI & VIBE CODING',time:'14:30–16:30',
+content:'Use AI to design and code with prompt excercises',
+goal:'Learn prompting',
+outcome:'Intro to AI usage & safety, Prompting practice, AI to robot workflow, Creative outputs',
+notes:'Guide safe use',
+materials:['AI tools'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-16-2025-10_10_20-AM-r8xwo0k26rwa1vtqix6k2ta83nva094tmdzxwoga9s.png'},
+
+// -------- Session 8 --------
+
+{day:'Day 2',session:'Session 8',title:'AUTONOMY & OPEN ACTIVITIES',time:'16:30–18:30',
+content:'Review',
+goal:'Reinforce',
+outcome:'Recap and Shared knowledge',
+notes:'Ask',
+materials:['None'],
+resources:[],
+img:'https://hprobots.com/wp-content/uploads/2026/02/IMG_6367-1024x653.jpg'},
+
+// -------- Session 9 --------
+{day:'Day 3',session:'Session 9',title:'FINAL PROJECT BUILD',time:'9:30–11:30',
+content:'Present',
+goal:'Communication',
+outcome:'Expo',
+notes:'Encourage',
+materials:['Camera'],
+resources:[],
+img:'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/838564/286154_954021.jpeg'},
+
+// -------- Session 10 --------
+
+{day:'Day 3',session:'Session 10',title:'FINAL SHOWCASE & WRAP UP',time:'11:30–13:30',
+content:'Upload',
+goal:'Documentation',
+outcome:'Portfolio',
+notes:'Important',
+materials:['PC'],
+resources:[],
+img:'https://www.makersempire.com/wp-content/uploads/2018/09/HP-Robots-Otto-Social-V3.png'}
 ];
 
 let index=0,filter='All',progress={};
@@ -111,8 +192,8 @@ let data=visible();
 let s=data[index];
 
 document.getElementById('title').innerText=s.title;
-document.getElementById('session').innerText=s.session;
-document.getElementById('time').innerText=s.day+" | "+s.time;
+document.getElementById('session').innerText=s.day+" | "+s.session;
+document.getElementById('time').innerText=s.time;
 document.getElementById('content').innerText=s.content;
 document.getElementById('goal').innerText=s.goal;
 document.getElementById('outcome').innerText=s.outcome;
@@ -125,7 +206,7 @@ if(s.resources.length){s.resources.forEach(r=>{let li=document.createElement('li
 
 let done=Object.values(progress).filter(v=>v).length;
 document.getElementById('progressBar').style.width=(done/slides.length*100)+'%';
-document.getElementById('progressBtn').innerText=progress[index]?'✅ Done':'Mark Done';
+document.getElementById('progressBtn').innerText=progress[index]?'✅ Completed':'☐ Mark Done';
 }
 
 function next(){index=Math.min(index+1,visible().length-1);render()}
