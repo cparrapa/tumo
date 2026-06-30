@@ -8,16 +8,17 @@ https://fonts.cdnfonts.com/css/forma-djr-text
 <style>
 body{margin:0;font-family:'Forma DJR Text', Arial;background:linear-gradient(135deg,#eef4ff,#f5ecff)}
 .header{position:fixed;top:0;width:100%;background:white;padding:14px 20px;box-shadow:0 2px 18px rgba(0,0,0,0.12);z-index:1000}
-.header-top{display:flex;justify-content:center;align-items:center;gap:12px;text-align:center}
-.brand{display:flex;align-items:center;gap:12px}
-.logo-wrapper{width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#0070f3;border-radius:14px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
-.logo-wrapper svg{width:38px;height:38px}
+.header-top{display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:center;flex-wrap:wrap}
+.header-logo{width:70px;height:50px;object-fit:contain;flex-shrink:0}
+.title-block{display:flex;flex-direction:column;align-items:center;gap:4px}
+.title-main{font-size:1.1rem;font-weight:800}
 .subtitle{font-size:.9rem;color:#555}
-.filters,.session-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
-.filters button,.session-filters button{background:#eee;color:#222;padding:8px 14px;border-radius:999px;border:1px solid transparent;transition:all .2s ease}
-.filters button.active,.session-filters button.active{background:#0070f3;color:#fff;border-color:#0070f3;box-shadow:0 6px 16px rgba(0,112,243,.18)}
+.session-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+.session-filters button{background:transparent;color:#222;padding:8px 14px;border-radius:999px;border:1px solid transparent;font-weight:700;transition:all .2s ease}
+.session-filters button:hover{background:rgba(0,112,243,.08)}
+.session-filters button.active{background:#0070f3;color:#fff;border-color:#0070f3;box-shadow:0 8px 18px rgba(0,112,243,.18)}
 .navTop{display:flex;justify-content:center;gap:20px;margin-top:10px}
-.container{max-width:900px;margin:200px auto 40px;padding:20px}
+.container{max-width:900px;margin:90px auto 40px;padding:20px}
 .card{background:#fff;border-radius:22px;padding:24px;box-shadow:0 18px 45px rgba(42,55,80,.08);min-height:450px}
 .activity-list,.material-list,#resources{padding-left:20px;margin:10px 0 20px}
 .activity-list li,.material-list li,#resources li{margin-bottom:8px;line-height:1.5}
@@ -34,26 +35,14 @@ button:hover{opacity:.95}
 
 <div class="header">
   <div class="header-top">
-    <div class="brand">
-      <span class="logo-wrapper" aria-label="HP Robots logo">
-        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img">
-          <circle cx="60" cy="60" r="56" fill="#0070f3"/>
-          <path d="M34 74c0-14 8-24 26-24s26 10 26 24" fill="#fff"/>
-          <path d="M46 46h28v8H46z" fill="#fff"/>
-          <circle cx="46" cy="38" r="8" fill="#fff"/>
-          <circle cx="74" cy="38" r="8" fill="#fff"/>
-          <circle cx="60" cy="58" r="6" fill="#0070f3"/>
-        </svg>
-      </span>
-      <div>
-        <div>HP Robots TUMO Lab</div>
-        <div class="subtitle">Agenda & session guide</div>
-      </div>
+    <img src="hprobots.svg" class="header-logo" alt="HP Robots logo" />
+    <div class="title-block">
+      <div class="title-main">HP Robots Otto TUMO Lab</div>
+      <div class="subtitle">Agenda & Sessions guide</div>
     </div>
+    <img src="altjuly.png" class="header-logo" alt="Alt July logo" />
   </div>
-  <div class="filters" id="filters"></div>
   <div class="session-filters" id="sessionFilters"></div>
-
 </div>
 
 <div class="container">
@@ -88,7 +77,7 @@ button:hover{opacity:.95}
 <script>
 const slides=[
 // -------- Cover --------
-{day:'All',session:'Welcome',title:'HP Robots TUMO Lab',time:'',
+{day:'All',session:'Welcome',title:'HP Robots Otto TUMO Lab',time:'',
 content:'This Learning Lab introduces students to a modern robotic ecosystem where they design, assemble, customize, and program intelligent and expressive robots or other hi-tech devices using the HP Robots Otto platform and the create. connect. code. learning ecosystems.',
 goal:'Learning objectives and outcomes',
 outcome:'Here you will see the activities with dedicated timing for each session. LETS GO!',
@@ -103,7 +92,7 @@ content:'Meet each other, STEAM + ecosystem, Meet Otto, Generate & Pick ideas, F
 goal:'Get to know each other build trust and group dynamic, Introducing ecosystem and possibilities, Start ideas and team direction',
 outcome:'09:30–10:00 (30min) Introductions, 10:00–10:20 (20 min) Inspiration Talk, 10:20–10:50 (20 min) Quick 3D prints, 10:50–11:30 (40 min) Ideation Challenge',
 materials:['Slides, robot examples,3D printer'],
-resources:['<a href="https://hprobots.com/otto-robot/product/">HP robots website</a>', '<a href="https://www.behance.net/cparrapa">Camilo Portfolio</a>', '<a href="https://hprobots.com/hp-customizer/">HP Customizer</a>'],
+resources:['<a href="https://hprobots.com/otto-robot/product/">HP robots website</a>', '<a href="https://www.behance.net/cparrapa">Camilo Portfolio</a>', '<a href="HP Robots Otto 1sheet.pdf">HP Robots in one sheet</a>','<a href="https://hprobots.com/hp-customizer/">HP Customizer</a>'],
 notes:'"Open your mind"',
 img:'https://hprobots.com/wp-content/uploads/2025/03/Snimka-obrazovky-2024-09-13-112356-2-1024x576.png'},
 
@@ -130,7 +119,7 @@ notes:'"Learn from the inside"',
 img:'https://hprobots.com/wp-content/uploads/2024/09/set-04-angle-01-2.png'},
 
 // -------- Session 4 --------
-{day:'Day 1',session:'Session 4',title:' CREATE: 3D MODELING FUNDAMENTALS',time:'16:30–18:30',
+{day:'Day 1',session:'Session 4',title:' CREATE: 3D MODELING',time:'16:30–18:30',
 content:'Time to bring your 2D sketches into 3D!',
 goal:'Learn CAD basics, Design custom robot accessories and parts',
 outcome:'16:30–17:00 (30 min) 3D Modelling Basics, 17:00–18:00 (60 min) Hands-on 3D, 18:00–18:30 (30 min) Basic 3D Slicing',
@@ -145,7 +134,7 @@ content:'Ensure your 3D models are optimized for printing, learn about slicing a
 goal:'Learn the basics of 3D printing with FDM, Slicer techniques for optimal and better results',
 outcome:'09:30–09:45 (15 min) Recap Day 1, 09:45–10:00 (15 min) Intro Design rules & principles, 10:00–11:00 (60 min) Fix your design for FDM, 11:00–11:30 (30 min) Slicer Tips & Tricks',
 materials:['Computer, Slicer software, Robot parts'],
-resources:['<a href="https://weareprintlab.com/blog/3d-printing-design-principles-model-set/">3D Printing Design Principles</a>','<a href="https://orca-slicer.com/guide/">Orca Slicer</a>', '<a href="https://www.making.unsw.edu.au/learn/3dp_basics/">3D Printing Basics</a>'],
+resources:['<a href="https://weareprintlab.com/blog/3d-printing-design-principles-model-set/">3D Printing Design Principles</a>', '<a href="https://www.making.unsw.edu.au/learn/3dp_basics/">3D Printing Basics</a>','<a href="https://orca-slicer.com/guide/">Orca Slicer</a>',],
 notes:'"Meassure twice, print once"',
 img:'https://hprobots.com/wp-content/uploads/2026/02/IMG_6367-1024x653.jpg'},
 
@@ -162,12 +151,12 @@ img:'https://hprobots.com/wp-content/uploads/2026/06/app-devices-scaled.png'},
 // -------- Lunch break --------
 
 // -------- Session 7 --------
-{day:'Day 2',session:'Session 7',title:'CODE PRO: MICRO PYTHON FUNDAMENTALS',time:'14:30–16:30',
+{day:'Day 2',session:'Session 7',title:'CODE PRO: MICRO PYTHON',time:'14:30–16:30',
 content:'Text-based programming. Use AI to design and code with prompt excercises',
 goal:'Move to text coding, Understanding logic deeper, Programming small scripts with conditionals or similar syntaxes, Use AI for coding & creativity',
 outcome:'14:30–14:40 (10 min) Blocks vs logic, 14:40–15:10 (30 min) Micro Python basics, 15:10–16:00 (50 min) Micro-project, 16:00–16:30 (30 min) Prompting techniques',
 materials:['Thonny IDE Editor and AI tools'],
-resources:[' <a href="https://www.kevsrobots.com/learn/micropython/">MicroPython Guide</a>', '<a href="https://thonny.org/">Thonny IDE</a>', '<a href="https://github.com/cparrapa/micropythonlibs">MicroPython Libraries & codes</a>'],
+resources:[ '<a href="https://thonny.org/">Thonny IDE</a>', ' <a href="https://github.com/cparrapa/micropythonlibs/blob/main/guides/Otto_MicroPython_ThonnyGuide.pdf">MicroPython Guide</a>','<a href="https://github.com/cparrapa/micropythonlibs">MicroPython Libraries & codes</a>'],
 notes:'"Bridge from blocks, hardness AI"',
 img:'https://hprobots.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-16-2025-10_10_20-AM-r8xwo0k26rwa1vtqix6k2ta83nva094tmdzxwoga9s.png'},
 
@@ -177,7 +166,7 @@ content:'Combine all the skills learned so far into your project',
 goal:'Experiment & tune technical details, Work on your project self-exploring, Ask questions and troubleshoot',
 outcome:'16:30–18:00 (90 min) Hands-on Project, 18:00–18:15 (15 min) Feedback, 18:15–18:30 (15 min) Define project output',
 materials:['All you need to build and code your robot / project'],
-resources:[ '<a href="https://www.printables.com/model/1595798-otto-pikachu-robot">Project Task Check list</a>' ],
+resources:[ '<a href="HP Robots Otto Project Check List.pdf">Project Task Check list</a>' ],
 notes:'"Be resourceful, be curious"',
 img:'https://i.ytimg.com/vi/CK7Y6z_ndK8/maxresdefault.jpg'},
 
@@ -197,49 +186,31 @@ content:'Finalize your project, present it to the group, and document your work 
 goal:'Present and Document projectsReflect on learning (Mutual constructive feedback)',
 outcome:'11:30–12:10 (40 min) Portfolio Documentation ,12:10–13:10 (60 min) Mini expo final presentations, 13:10–13:20 (10 min) Reflection + feedback,13:20–13:30 (10 min) Group photo + closure',
 materials:['Projector, Camera, Computers for documentation'],
-resources:['<a href="https://www.printables.com/@hprobots/collections/24346">Printables Community</a>'],
+resources:['<a href="https://www.printables.com/@hprobots/collections/24346">Printables Community Collection</a>', '<a href="https://www.printables.com/model/1595798-otto-pikachu-robot">Printables REMIX documentation example</a>'],
 notes:'"This is not the end, this is the beginning"',
 img:'https://www.makersempire.com/wp-content/uploads/2018/09/HP-Robots-Otto-Social-V3.png'}
 ];
 
 let index=0;
-let filter='All';
-let selectedSession=null;
 let progress={};
 const sessionNames = slides.filter(s=>s.session.startsWith('Session')).map(s=>s.session);
 
 function renderFilters(){
-  const f=document.getElementById('filters');
-  f.innerHTML='';
-  ['All','Day 1','Day 2','Day 3'].forEach(d=>{
-    const b=document.createElement('button');
-    b.innerText=d;
-    b.className = !selectedSession && filter===d ? 'active' : '';
-    b.onclick = ()=>{ filter=d; selectedSession=null; index=0; render(); };
-    f.appendChild(b);
-  });
-
   const sf=document.getElementById('sessionFilters');
   sf.innerHTML='';
-  const resetBtn=document.createElement('button');
-
-  resetBtn.onclick = ()=>{ selectedSession=null; filter='All'; index=0; render(); };
-  sf.appendChild(resetBtn);
 
   sessionNames.forEach(name=>{
     const b=document.createElement('button');
     b.innerText = name.replace('Session ','S');
-    b.className = selectedSession===name ? 'active' : '';
-    b.onclick = ()=>{ selectedSession=name; filter='All'; index=0; render(); };
+    b.className = slides[index] && slides[index].session === name ? 'active' : '';
+    b.onclick = ()=>{ index = slides.findIndex(s=>s.session===name); render(); };
     sf.appendChild(b);
   });
 }
 
 function visible(){
-  let list = slides;
-  if(filter !== 'All') list = list.filter(s=>s.day===filter);
-  if(selectedSession) list = list.filter(s=>s.session===selectedSession);
-  return list;
+  
+  return slides;
 }
 
 function normalizeList(text){
